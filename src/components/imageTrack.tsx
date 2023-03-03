@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import ReactCSSTransitionGroup from 'react-transition-group'; 
 
 type Props = {
   children: JSX.Element[];
@@ -26,17 +25,27 @@ const Index = ({ children }: Props) => {
     const maxDelta = window.innerWidth / 2;
 
     const _percentage = (mouseDelta / maxDelta) * -100;
-    const _nextPercentage = Math.max(Math.min((prevPercentage + _percentage), 0), -100)
+    const _nextPercentage = Math.max(
+      Math.min(prevPercentage + _percentage, 0),
+      -100
+    );
 
     setPercentage(_nextPercentage);
   }
 
   return (
     <div
-      data-mouse-down-at={mouseDownAt}
       onMouseDown={(ev) => handleMouseDown(ev)}
       onMouseUp={(ev) => handleMouseUp(ev)}
       onMouseMove={(ev) => handleMouseMove(ev)}
+      style={{
+        display: "flex",
+        gap: "4vmin",
+        position: "absolute",
+        left: "50%",
+        top: "50%",
+        transform: `translate(${percentage}%, -50%)`,
+      }}
     >
       {children}
     </div>
