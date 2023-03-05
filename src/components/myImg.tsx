@@ -7,9 +7,7 @@ type Props = {
 
 const Index = ({ src }: Props) => {
 
-  const ctx = useContext(ImageTrackContext);
-
-  const nextPercentage = ctx;
+  const nextPercentage = useContext(ImageTrackContext);
 
   return (
     <img

@@ -5,21 +5,23 @@ type Props = {
   children: JSX.Element[];
 };
 
+const calcNextPercentage = (perc: number) => Math.max(Math.min(perc, 0), -100);
+
 const Index = ({ children }: Props) => {
   const [mouseDownAt, setMouseDownAt] = useState(0);
   const [percentage, setPercentage] = useState(0);
   const [prevPercentage, setPrevPercentage] = useState(0);
 
-  function handleMouseDown(e: React.MouseEvent) {
+  function handleOnDown(e: React.MouseEvent) {
     setMouseDownAt(e.clientX);
   }
 
-  function handleMouseUp() {
+  function handleOnUp(e: React.MouseEvent) {
     setMouseDownAt(0);
     setPrevPercentage(percentage);
   }
 
-  function handleMouseMove(e: React.MouseEvent) {
+  function handleOnMove(e: React.MouseEvent) {
     if (mouseDownAt === 0) return;
 
     const mouseDelta = mouseDownAt - e.clientX;
@@ -27,10 +29,7 @@ const Index = ({ children }: Props) => {
 
     const _percentage = (mouseDelta / maxDelta) * -100;
     const nextPercentageUnconstrained = prevPercentage + _percentage;
-    const nextPercentage = Math.max(
-      Math.min(nextPercentageUnconstrained, 0),
-      -100
-    );
+    const nextPercentage = calcNextPercentage(nextPercentageUnconstrained);
 
     setPercentage(nextPercentage);
   }
@@ -49,9 +48,9 @@ const Index = ({ children }: Props) => {
 
   return (
     <div
-      onMouseDown={handleMouseDown}
-      onMouseUp={handleMouseUp}
-      onMouseMove={handleMouseMove}
+      onMouseDown={handleOnDown}
+      onMouseUp={handleOnUp}
+      onMouseMove={handleOnMove}
       style={cssProps}
     >
       <ImageTrackContext.Provider value={percentage}>

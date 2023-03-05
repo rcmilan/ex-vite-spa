@@ -10,10 +10,6 @@ function App() {
       <MyImg src={Mario}/>
       <MyImg src={Luigi}/>
       <MyImg src={Mario}/>
-      <MyImg src={Mario}/>
-      <MyImg src={Mario}/>
-      <MyImg src={Mario}/>
-      <MyImg src={Mario}/>
       <MyImg src={Luigi}/>
       <MyImg src={Mario}/>
     </ImageTrack>
