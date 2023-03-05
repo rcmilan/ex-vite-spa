@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ImageTrackContext from "../context/index";
 
 type Props = {
   children: JSX.Element[];
@@ -53,7 +54,9 @@ const Index = ({ children }: Props) => {
       onMouseMove={handleMouseMove}
       style={cssProps}
     >
-      {children}
+      <ImageTrackContext.Provider value={percentage}>
+        {children}
+      </ImageTrackContext.Provider>
     </div>
   );
 };

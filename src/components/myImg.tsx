@@ -1,9 +1,15 @@
+import { useContext } from "react";
+import ImageTrackContext from "../context/index";
+
 type Props = {
   src: string;
 };
 
 const Index = ({ src }: Props) => {
-  const nextPercentage = 100;
+
+  const ctx = useContext(ImageTrackContext);
+
+  const nextPercentage = ctx;
 
   return (
     <img
