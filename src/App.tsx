@@ -1,6 +1,7 @@
 import ImageTrack from "./components/imageTrack";
 import MyImg from "./components/myImg";
 import Mario from './assets/mario0.png';
+import Luigi from './assets/luigi0.png';
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
       <MyImg src={Mario}/>
       <MyImg src={Mario}/>
       <MyImg src={Mario}/>
-      <MyImg src={Mario}/>
+      <MyImg src={Luigi}/>
       <MyImg src={Mario}/>
     </ImageTrack>
   );
